@@ -21,7 +21,7 @@
     </view>
 
     <view class='commit-content'>
-      <!-- 实现点击播放音频 -->
+      <!-- 实现点击播放音频 可能比较慢-->
       <view class='audio-commit' wx:if="{{detail.type=='audio'}}" data-url="{{detail.content}}" data-state='{{voiceState}}' bindtap='playVoice'>
         <image class='audio-icon' src='/images/play-audio.jpg' mode='widthFix'></image>
       </view>
@@ -34,7 +34,7 @@
         <image class='nav-icon' src="{{collectState==1?'/images/collected-icon.jpg':'/images/collect-icon.jpg'}}" mode='widthFix'></image>
         <view class='nav-name'>{{collectState==1?'取消收藏':'收藏影评'}}</view>
       </view>
-      <view class='nav-item' bindtap='typeChoice' id='{{movie.id}}'>
+      <view class='nav-item' bindtap='typeChoice' id='{{movie.id}}' wx:if="{{issueState==0}}">
         <image class='nav-icon' src='/images/commit-icon.jpg' mode='widthFix'></image>
         <view class='nav-name'>添加影评</view>
       </view>

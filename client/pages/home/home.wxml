@@ -1,11 +1,11 @@
 <view class='rcmd-card'>
-<navigator hover-class='none' url='/pages/movie-detail/movie-detail?id=1'>
-<image class='rcmd-poster' src='../../images/p2517753454.jpg' mode='widthFix'></image>
-<view class='rcmd-title'>复仇者联盟3：无限战争</view>
+<navigator hover-class='none' url='/pages/movie-detail/movie-detail?id={{detail.movie_id}}'>
+<image class='rcmd-poster' src='{{movieInfo.image}}' mode='widthFix'></image>
+<view class='rcmd-title'>{{movieInfo.title}}</view>
 </navigator>
-<navigator class='rcmd-source'  hover-class='none' url="/pages/commit-detail/commit-detail">
-<image class='rcmd-icon' src='../../images/thumbnail_irene.jpg' mode='widthFix'></image>
-<view class='rcmd-name'>Irene给你推荐了一部电影
+<navigator class='rcmd-source'  hover-class='none' url="/pages/commit-detail/commit-detail?commentId={{detail.id}}">
+<image class='rcmd-icon' src='{{detail.user_icon}}' mode='widthFix'></image>
+<view class='rcmd-name'>{{detail.user_name}}给你推荐了一部电影
 </view>
 </navigator>
 </view>

@@ -42,7 +42,7 @@ router.get('/comment',controllers.commit.list)
 router.get('/comment/:id', controllers.commit.comment)
 
 //下载用户发布的评论
-router.get('/comment/user', validationMiddleware, controllers.commit.iList)
+router.get('/comment-user', validationMiddleware, controllers.commit.iList)
 
 //对用户收藏列表进行操作
 router.post('/collection', validationMiddleware,controllers.collection.operate)
@@ -50,7 +50,7 @@ router.post('/collection', validationMiddleware,controllers.collection.operate)
 router.get('/collection', validationMiddleware, controllers.collection.list)
 
 //上传评论
-router.put('/comment/sub', validationMiddleware, controllers.commit.subComment)
+router.put('/comment-sub', validationMiddleware, controllers.commit.subComment)
 
 
 

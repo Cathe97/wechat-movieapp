@@ -15,7 +15,7 @@
     <view class='now-type'>{{type[index]}} v</view>
   </picker>
 
-  <view class='commit-list'>
+  <view class='commit-list' wx:if='{{index==0}}'>
     <navigator class='commit-item' hover-class='none' url='/pages/commit-detail/commit-detail?commentId={{item.id}}' wx:for="{{list}}" wx:key='id'>
       <image class='movie-poster' src='{{item.image}}' mode='widthFix'></image>
       <view class='commit-info'>
@@ -33,6 +33,27 @@
       </view>
     </navigator>
   </view>
+
+  <view class='commit-list' wx:else>
+    <navigator class='commit-item' hover-class='none' url='/pages/commit-detail/commit-detail?commentId={{item.id}}' wx:for="{{iList}}" wx:key='id'>
+      <image class='movie-poster' src='{{item.image}}' mode='widthFix'></image>
+      <view class='commit-info'>
+        <view class='movie-title'>{{item.title}}</view>
+        <view class='commit-content'>
+          <view class='audio-commit' wx:if="{{item.type=='audio'}}">
+            <image class='audio-icon' src='/images/play-audio.jpg' mode='widthFix'></image>
+          </view>
+          <view class='text-commit' wx:if="{{item.type=='text'}}">{{item.content}}</view>
+        </view>
+        <view class='user-info'>
+          <image class='user-icon' src='{{item.user_icon}}' mode="widthFix"></image>
+          <view class='user-name'>{{item.user_name}}</view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+
+
 </view>
 
 

@@ -41,10 +41,10 @@ var config = {
         //操作收藏列表
         collectionOperate: `${host}/weapp/collection`,
 
-        iList: `${host}/weapp/comment/user`,
+        iList: `${host}/weapp/comment-user`,
 
         //提交影评
-        submit:`${host}/weapp/comment/sub`
+        submit:`${host}/weapp/comment-sub`
     }
 };
 

@@ -13,7 +13,7 @@ App({
     
     qcloud.login({
       success: result => {
-        console.log(result)
+        // console.log(result)
         if (result) {
           let userInfo = result
           success && success({

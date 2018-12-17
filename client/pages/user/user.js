@@ -14,26 +14,14 @@ Page({
     userInfo:null,
     type:['已收藏的影评','已发布的影评'],
     index:COLLECTED,
-    list:{}
+    list:{},
+    iList:{}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    app.doQcloudLogin({
-      success: ({ userInfo }) => {
-        this.setData({
-          userInfo
-        })
-        this.getIssue()
-        this.getCollection()
-        
-      },
-      fail: err => {
-        console.log(err)
-      }
-    })
   },
 
   /**
@@ -50,6 +38,10 @@ Page({
       },
       fail:err=>{
         console.log(err)
+        wx.showToast({
+          title: '登录失败',
+          icon:'none'
+        })
       }
     })
   },
@@ -58,10 +50,12 @@ Page({
 
   bindPickerChange(event){
     let typeNum=event.detail.value
-    console.log(typeNum)
+    //console.log(typeNum)
     this.setData({
       index:event.detail.value
     })
+    
+    
   },
 
   onTapLogin:function(){
@@ -74,10 +68,7 @@ Page({
     })
   },
 
-  // 根据选择类型不同调用不同函数
-  getList(typeNum){
-
-  },
+  
 
   //获取收藏列表
   getCollection() {
@@ -90,11 +81,15 @@ Page({
         this.setData({
           list:list
         })
-        console.log(this.data.list)
+        //console.log(this.data.list)
         
       },
       fail: r => {
         console.log(r)
+        wx.showToast({
+          title: '数据加载失败',
+          icon:'none'
+        })
       }
     })
   },
@@ -105,10 +100,18 @@ Page({
       url:config.service.iList,
       login:true,
       success:res=>{
-        console.log(res)
+        //console.log(res)
+        let issueList=res.data.data
+        this.setData({
+          iList:issueList
+        })
       },
       fail:res=>{
         console.log(res)
+        wx.showToast({
+          title: '数据加载失败',
+          icon:'none'
+        })
       }
     })
   }

@@ -7,6 +7,8 @@ const AUDIO_ON=1;
 const AUDIO_OFF=0;
 const COLLECTED=1;
 const UNCOLLECTED=0;
+const UNCOMMENTED=0;
+const COMMENTED=1
 
 Page({
 
@@ -19,7 +21,9 @@ Page({
     voiceState:0,
     collectState:0,
     commmentId:{},
-    userInfo:null
+    userInfo:null,
+    iList:{},
+    issueState:UNCOMMENTED
 
   },
 
@@ -34,6 +38,8 @@ Page({
         })
         this.getCommentDetail(options.commentId)
         this.testCollection()
+        this.getIssue()
+        
       },
       fail: err => {
         console.log(err)
@@ -58,12 +64,13 @@ Page({
   /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
+  onShow: function (options) {
     app.doQcloudLogin({
       success: ({ userInfo }) => {
         this.setData({
           userInfo
         })
+        
       },
       fail: err => {
         console.log(err)
@@ -214,7 +221,7 @@ Page({
       login:true,
       success:r=>{
         //获得收藏列表
-        console.log(r)
+       // console.log(r)
         let list=r.data.data
 
         for(let i=0;i<list.length;i++){
@@ -245,12 +252,12 @@ Page({
         collectState: this.data.collectState
       },
       success: res => {
-        console.log(res)
-        console.log(this.data.collectState)
+        //console.log(res)
+       // console.log(this.data.collectState)
         this.setData({
           collectState:this.data.collectState?UNCOLLECTED:COLLECTED
         })
-        console.log(this.data.collectState)
+        //console.log(this.data.collectState)
       },
       fail: res => {
         console.log(res)
@@ -264,11 +271,38 @@ Page({
         this.collectDBOperate()
       }
     })
-  }
+  },
   
 
 
   // 检查用户是否发表过某id电影评论
+    getIssue() {
+    qcloud.request({
+      url: config.service.iList,
+      login: true,
+      success: res => {
+        //console.log(res)
+        let issueList = res.data.data
+        let title=this.data.movie.title
+        for(let i=0;i<issueList.length;i++){
+          //console.log(issueList[i].id)
+          if(issueList[i].title==title){
+            this.setData({
+              issueState:COMMENTED
+            })
+          }
+        }
+        console.log(this.data.issueState)
 
+      },
+      fail: res => {
+        console.log(res)
+        wx.showToast({
+          title: '数据加载失败',
+          icon: 'none'
+        })
+      }
+    })
+  }
 
 })

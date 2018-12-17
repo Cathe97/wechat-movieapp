@@ -9,7 +9,8 @@
 <image class='nav-icon' src='/images/look-icon.jpg' mode='widthFix'></image>
 <view class='nav-name'>查看影评</view>
 </navigator>
-<view class='nav-item' bindtap='typeChoice' data-movieId='{{detail.id}}'>
+<view class='nav-item' bindtap='typeChoice' data-movieId='{{detail.id}}' wx:if='{{issueState==0}}'>
+<!-- 用户若发表过评论则不显示评论按钮 -->
 <image class='nav-icon' src='/images/commit-icon.jpg' mode='widthFix'></image>
 <view class='nav-name'>添加影评</view>
 </view>

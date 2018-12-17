@@ -33,10 +33,10 @@
 			"current": 3,
 			"list": [
 				{
-					"id": -1,
+					"id": 0,
 					"name": "电影详情编译",
 					"pathName": "pages/movie-detail/movie-detail",
-					"query": ""
+					"query": "id=1"
 				},
 				{
 					"id": -1,
@@ -54,13 +54,13 @@
 					"id": 3,
 					"name": "编辑评论编译",
 					"pathName": "pages/add-commit/add-commit",
-					"query": "type=audio&id=3"
+					"query": "type=text&id=8"
 				},
 				{
 					"id": 4,
 					"name": "影评详情",
 					"pathName": "pages/commit-detail/commit-detail",
-					"query": "commentId=5"
+					"query": "commentId=1"
 				}
 			]
 		}

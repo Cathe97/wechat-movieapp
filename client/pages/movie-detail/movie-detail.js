@@ -1,6 +1,8 @@
 // pages/movie-detail/movie-detail.js
 const qcloud = require('../../vendor/wafer2-client-sdk/index.js')
 const config = require('../../config.js')
+const UNCOMMENTED = 0;
+const COMMENTED = 1
 
 Page({
 
@@ -8,15 +10,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    detail:{}
+    detail:{},
+    issueState:UNCOMMENTED
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    
     this.getMovieDetail(options.id)
+    this.getIssue()
   },
 
   /**
@@ -114,6 +117,36 @@ Page({
         }
       },
       fail:res=>{
+      }
+    })
+  },
+
+  //检查用户是否发表过该电影评论
+  getIssue() {
+    qcloud.request({
+      url: config.service.iList,
+      login: true,
+      success: res => {
+        //console.log(res)
+        let issueList = res.data.data
+        let title = this.data.detail.title
+        for (let i = 0; i < issueList.length; i++) {
+          //console.log(issueList[i].id)
+          if (issueList[i].title == title) {
+            this.setData({
+              issueState: COMMENTED
+            })
+          }
+        }
+        console.log(this.data.issueState)
+
+      },
+      fail: res => {
+        console.log(res)
+        wx.showToast({
+          title: '数据加载失败',
+          icon: 'none'
+        })
       }
     })
   }
