@@ -1,0 +1,43 @@
+<view wx:if="{{!userInfo}}">
+  <view class='unlogin-card'>
+    <view class="unlogin-head"></view>
+    <view class="unlogin-info">
+      <view class="unlogin-text">未登录</view>
+      <view class="unlogin-tips">点击微信登录后可发表影评</view>
+    </view>
+  </view>
+  <button class="unlogin-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
+</view>
+
+<view wx:else>
+  <view class='comment-card'>
+    <image class='comment-poster' src="{{movie.image}}" mode='widthFix'></image>
+    <view class='comment-info'>
+      <view class='comment-title'>{{movie.title}}</view>
+    </view>
+    <view class='commit-user'>
+      <image class='user-icon' src='{{detail.user_icon}}' mode='widthFix'></image>
+      <view class='user-info'>{{detail.user_name}}的影评</view>
+    </view>
+
+    <view class='commit-content'>
+      <!-- 实现点击播放音频 -->
+      <view class='audio-commit' wx:if="{{detail.type=='audio'}}" data-url="{{detail.content}}" data-state='{{voiceState}}' bindtap='playVoice'>
+        <image class='audio-icon' src='/images/play-audio.jpg' mode='widthFix'></image>
+      </view>
+      <view class='text-commit' wx:if="{{detail.type=='text'}}">{{detail.content}}</view>
+    </view>
+
+    <view class='nav'>
+      <view class='nav-item' bindtap='collectOperate' data-commentId='{{detail.id}}'>
+        <!-- 添加更新数据表的事件处理函数 -->
+        <image class='nav-icon' src="{{collectState==1?'/images/collected-icon.jpg':'/images/collect-icon.jpg'}}" mode='widthFix'></image>
+        <view class='nav-name'>{{collectState==1?'取消收藏':'收藏影评'}}</view>
+      </view>
+      <view class='nav-item' bindtap='typeChoice' id='{{movie.id}}'>
+        <image class='nav-icon' src='/images/commit-icon.jpg' mode='widthFix'></image>
+        <view class='nav-name'>添加影评</view>
+      </view>
+    </view>
+  </view>
+</view>

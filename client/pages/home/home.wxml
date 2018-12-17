@@ -1,2 +1,21 @@
-<!--pages/home/home.wxml-->
-<text>pages/home/home.wxml</text>
+<view class='rcmd-card'>
+<navigator hover-class='none' url='/pages/movie-detail/movie-detail?id=1'>
+<image class='rcmd-poster' src='../../images/p2517753454.jpg' mode='widthFix'></image>
+<view class='rcmd-title'>复仇者联盟3：无限战争</view>
+</navigator>
+<navigator class='rcmd-source'  hover-class='none' url="/pages/commit-detail/commit-detail">
+<image class='rcmd-icon' src='../../images/thumbnail_irene.jpg' mode='widthFix'></image>
+<view class='rcmd-name'>Irene给你推荐了一部电影
+</view>
+</navigator>
+</view>
+<view class='nav'>
+<navigator class='nav-item' hover-class='none' url="/pages/hot-movie/hot-movie">
+<image class='nav-icon' src='../../images/hot-icon.jpg' mode='widthFix' ></image>
+<view class='nav-name'>热门</view>
+</navigator>
+<navigator class='nav-item'  hover-class='none' url="/pages/user/user">
+<image class='nav-icon' src='../../images/user-icon.jpg' mode='widthFix'></image>
+<view class='nav-name'>我的</view>
+</navigator>
+</view>

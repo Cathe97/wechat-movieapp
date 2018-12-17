@@ -1,0 +1,9 @@
+<view class="hot-list">
+  <navigator class='hot-item' hover-class='none' url='/pages/movie-detail/movie-detail?id={{item.id}}' wx:for="{{moviesList}}" wx:key='id'>
+    <image class='hot-poster' src='{{item.image}}' mode='widthFix'></image>
+    <view class='hot-info'>
+      <view class='hot-title'>{{item.title}}</view>
+      <view class='hot-type'>类型：{{item.category}}</view>
+    </view>
+  </navigator>
+</view>

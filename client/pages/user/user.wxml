@@ -1,0 +1,42 @@
+<!--pages/user/user.wxml-->
+<view wx:if="{{!userInfo}}">
+  <view class='unlogin-card'>
+    <view class="unlogin-head"></view>
+    <view class="unlogin-info">
+      <view class="unlogin-text">未登录</view>
+      <view class="unlogin-tips">点击微信登录后可发表影评</view>
+    </view>
+  </view>
+  <button class="unlogin-btn" open-type='getUserInfo' bindgetuserinfo='onTapLogin'>微信登录</button>
+</view>
+
+<view wx:else>
+  <picker class='select-type' mode="selector" bindchange='bindPickerChange' value="{{index}}" range='{{type}}'>
+    <view class='now-type'>{{type[index]}} v</view>
+  </picker>
+
+  <view class='commit-list'>
+    <navigator class='commit-item' hover-class='none' url='/pages/commit-detail/commit-detail?commentId={{item.id}}' wx:for="{{list}}" wx:key='id'>
+      <image class='movie-poster' src='{{item.image}}' mode='widthFix'></image>
+      <view class='commit-info'>
+        <view class='movie-title'>{{item.title}}</view>
+        <view class='commit-content'>
+          <view class='audio-commit' wx:if="{{item.type=='audio'}}">
+            <image class='audio-icon' src='/images/play-audio.jpg' mode='widthFix'></image>
+          </view>
+          <view class='text-commit' wx:if="{{item.type=='text'}}">{{item.content}}</view>
+        </view>
+        <view class='user-info'>
+          <image class='user-icon' src='{{item.user_icon}}' mode="widthFix"></image>
+          <view class='user-name'>{{item.user_name}}</view>
+        </view>
+      </view>
+    </navigator>
+  </view>
+</view>
+
+
+
+<navigator class='nav' hover-class='none' url="/pages/home/home">
+  <view class='nav-text'>回到首页</view>
+</navigator>

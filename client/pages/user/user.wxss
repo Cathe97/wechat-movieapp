@@ -1,0 +1,92 @@
+/* pages/user/user.wxss */
+.select-type{
+  margin: 50rpx 200rpx;
+  color:rgb(30, 180, 30);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.now-type{
+  font-size: 32rpx;
+}
+.nav{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top:  1px solid rgba(150, 150, 150, 0.5);
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.nav-text{
+  color: rgb(150,150,150);
+  font-size:42rpx;
+  line-height: 48rpx;
+  margin: 30rpx 0;
+}
+
+.commit-item{
+  margin: 20rpx 30rpx 0rpx;
+  display: flex;
+  background: #ffffff;
+  border: 1px solid rgba(150, 150, 150, 0.2);
+}
+
+.commit-list{
+  margin-bottom: 200rpx;
+}
+
+.movie-poster{
+  width: 200rpx;
+  flex-shrink: 0;
+}
+
+.commit-info{
+  margin: 30rpx 40rpx 0;
+}
+
+.movie-title{
+  font-weight: 600;
+  font-size: 38rpx;
+}
+
+.commit-content{
+  margin: 20rpx 0rpx;
+}
+
+.audio-icon{
+  width: 38rpx;
+  margin: 15rpx 30rpx 5rpx;
+}
+
+.audio-commit{
+  background:rgba(150, 150, 150, 0.5);
+  border-radius: 5rpx;
+}
+
+.text-commit{
+  font-size: 35rpx;
+  opacity: 0.8;
+  line-height: 50rpx;
+  height: 50rpx;
+  overflow: hidden;
+}
+
+.user-info{
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+  
+}
+
+.user-icon{
+  width: 80rpx;
+  border-radius: 50%;
+}
+
+.user-name{
+  margin-left: 25rpx;
+  font-size: 32rpx;
+  
+}

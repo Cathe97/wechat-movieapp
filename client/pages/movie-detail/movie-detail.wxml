@@ -1,0 +1,17 @@
+<view class='movie-card'>
+<image class='movie-poster' src="{{detail.image}}" mode='widthFix'></image>
+<view class='movie-info'>
+<view class='movie-title'>{{detail.title}}</view>
+<view class='movie-description'>{{detail.description}}</view>
+</view>
+<view class='nav'>
+<navigator class='nav-item' hover-class='none' url="/pages/commit-list/commit-list?id={{detail.id}}">
+<image class='nav-icon' src='/images/look-icon.jpg' mode='widthFix'></image>
+<view class='nav-name'>查看影评</view>
+</navigator>
+<view class='nav-item' bindtap='typeChoice' data-movieId='{{detail.id}}'>
+<image class='nav-icon' src='/images/commit-icon.jpg' mode='widthFix'></image>
+<view class='nav-name'>添加影评</view>
+</view>
+</view>
+</view>

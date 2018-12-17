@@ -1,0 +1,71 @@
+/* pages/commit-list/commit-list.wxss */
+.commit-list{
+  margin: 50rpx 0 150rpx;
+  background: #ffffff;
+  border-top: 1px solid rgba(150, 150, 150, 0.5);
+}
+
+.commit-card{
+  border-bottom: 1px solid rgba(150, 150, 150, 0.5);
+  padding: 25rpx 50rpx;
+}
+
+.commit-user{
+  display: flex;
+  align-items: center;
+  margin-bottom: 15rpx;
+  
+}
+
+.user-icon{
+  width: 125rpx;
+  border-radius: 50%;
+}
+
+.user-info{
+  margin-left: 25rpx;
+  font-size: 32rpx;
+  
+}
+
+.commit-content{
+  margin: 0 20rpx;
+}
+
+.audio-icon{
+  width: 40rpx;
+  margin: 15rpx 30rpx 5rpx;
+}
+
+.audio-commit{
+  background:rgba(150, 150, 150, 0.5);
+  border-radius: 5rpx;
+}
+
+.text-commit{
+  font-size: 28rpx;
+  opacity: 0.8;
+  line-height: 68rpx;
+  height: 68rpx;
+  overflow: hidden;
+}
+
+.nav{
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  border-top:  1px solid rgba(150, 150, 150, 0.5);
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.nav-text{
+  color: rgb(150,150,150);
+  font-size:42rpx;
+  line-height: 48rpx;
+  margin: 30rpx 0;
+}
+
+
+

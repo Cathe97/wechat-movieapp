@@ -21,7 +21,30 @@ var config = {
         tunnelUrl: `${host}/weapp/tunnel`,
 
         // 上传图片接口
-        uploadUrl: `${host}/weapp/upload`
+        uploadUrl: `${host}/weapp/upload`,
+
+        //导入电影列表
+        moviesList: `${host}/weapp/movies`,
+
+        //下载电影详情
+        movieDetail: `${host}/weapp/movies/`,
+
+        //下载评论列表
+        commentList: `${host}/weapp/comment`,
+
+        //下载评论详情
+        commentDetail: `${host}/weapp/comment/`,
+
+        //下载收藏列表
+        collectionList: `${host}/weapp/collection`,
+
+        //操作收藏列表
+        collectionOperate: `${host}/weapp/collection`,
+
+        iList: `${host}/weapp/comment/user`,
+
+        //提交影评
+        submit:`${host}/weapp/comment/sub`
     }
 };
 

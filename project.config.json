@@ -4,9 +4,65 @@
 	"miniprogramRoot": "./client",
 	"qcloudRoot": "./server",
 	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
 		"newFeature": true
 	},
 	"appid": "wx76fce64e3f760b3f",
 	"projectname": "wechat-movieapp",
-	"condition": {}
+	"compileType": "miniprogram",
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"list": []
+		},
+		"miniprogram": {
+			"current": 3,
+			"list": [
+				{
+					"id": -1,
+					"name": "电影详情编译",
+					"pathName": "pages/movie-detail/movie-detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "影评列表",
+					"pathName": "pages/commit-list/commit-list",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "个人中心编译",
+					"pathName": "pages/user/user",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "编辑评论编译",
+					"pathName": "pages/add-commit/add-commit",
+					"query": "type=audio&id=3"
+				},
+				{
+					"id": 4,
+					"name": "影评详情",
+					"pathName": "pages/commit-detail/commit-detail",
+					"query": "commentId=5"
+				}
+			]
+		}
+	}
 }

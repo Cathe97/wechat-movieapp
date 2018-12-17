@@ -32,4 +32,26 @@ router.get('/message', controllers.message.get)
 // POST 用来处理微信转发过来的客服消息
 router.post('/message', controllers.message.post)
 
+router.get('/movies', controllers.movies.list)
+
+router.get('/movies/:id', controllers.movies.movieDetail)
+
+router.get('/comment',controllers.commit.list)
+
+//获取评论详情
+router.get('/comment/:id', controllers.commit.comment)
+
+//下载用户发布的评论
+router.get('/comment/user', validationMiddleware, controllers.commit.iList)
+
+//对用户收藏列表进行操作
+router.post('/collection', validationMiddleware,controllers.collection.operate)
+
+router.get('/collection', validationMiddleware, controllers.collection.list)
+
+//上传评论
+router.put('/comment/sub', validationMiddleware, controllers.commit.subComment)
+
+
+
 module.exports = router

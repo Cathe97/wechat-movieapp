@@ -1,0 +1,18 @@
+<view class="commit-list">
+  <navigator class='commit-card' hover-class='none' url='/pages/commit-detail/commit-detail?commentId={{item.id}}' wx:for="{{commentList}}" wx:key='id'>
+    <view class='commit-user'>
+      <image class='user-icon' src='{{item.user_icon}}' mode='widthFix'></image>
+      <view class='user-info'>{{item.user_name}}</view>
+    </view>
+    <view class='commit-content'>
+      <view class='audio-commit' wx:if="{{item.type=='audio'}}">
+        <image class='audio-icon' src='/images/play-audio.jpg' mode='widthFix'></image>
+      </view>
+      <view class='text-commit' wx:if="{{item.type=='text'}}">{{item.content}}</view>
+    </view>
+  </navigator>
+</view>
+
+<navigator class='nav' hover-class='none' url="/pages/home/home">
+  <view class='nav-text'>回到首页</view>
+</navigator>

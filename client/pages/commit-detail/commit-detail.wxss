@@ -1,0 +1,91 @@
+/* pages/commit-detail/commit-detail.wxss */
+.comment-card{
+  background: #ffffff;
+  position: relative;
+  top: 120rpx;
+  margin: 0 25rpx 50rpx;
+  border: 1px solid rgba(150, 150, 150, 0.2);
+}
+
+.comment-poster{
+  position: absolute;
+  top:-70rpx;
+  left: 200rpx;
+  width: 300rpx;
+}
+
+.comment-info{
+  margin: 400rpx 60rpx 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.comment-title{
+  font-size: 50rpx;
+  font-weight: 600;
+}
+
+
+.commit-user{
+  display: flex;
+  align-items: center;
+  margin:30rpx 30rpx 0;
+}
+
+.user-icon{
+  width: 125rpx;
+  border-radius: 50%;
+}
+
+.user-info{
+  margin-left: 25rpx;
+  font-size: 32rpx;
+}
+
+.commit-content{
+  margin: 50rpx 50rpx 0;
+}
+
+.audio-icon{
+  width: 40rpx;
+  margin: 15rpx 30rpx 5rpx;
+}
+
+.audio-commit{
+  background:rgba(150, 150, 150, 0.5);
+  border-radius: 5rpx;
+}
+
+.text-commit{
+  font-size: 28rpx;
+  opacity: 0.8;
+  
+}
+
+
+.nav{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-item{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  /* flex: 1 1 auto; */
+  margin: 75rpx 50rpx 50rpx;
+  padding: 10rpx 25rpx;
+  border: 1px solid rgba(150, 150, 150, 0.2);
+  border-radius: 15rpx;
+}
+
+.nav-icon{
+  width: 50rpx;
+}
+
+.nav-name{
+  font-size: 30rpx;
+  color: rgba(39, 37, 37, 0.7)
+}

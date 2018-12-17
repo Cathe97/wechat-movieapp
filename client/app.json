@@ -1,7 +1,12 @@
 {
   "pages":[
-    "pages/home/home"
-
+    "pages/home/home",
+    "pages/hot-movie/hot-movie",
+    "pages/user/user",
+    "pages/commit-detail/commit-detail",
+    "pages/movie-detail/movie-detail",
+    "pages/commit-list/commit-list",
+    "pages/add-commit/add-commit"
   ],
   "window":{
     "backgroundColor":"#F6F6F6",

@@ -1,0 +1,28 @@
+.hot-item{
+  margin: 40rpx 30rpx 50rpx;
+  display: flex;
+  background: #ffffff;
+  border: 1px solid rgba(150, 150, 150, 0.2);
+}
+
+.hot-poster{
+  width: 225rpx;
+}
+
+.hot-info{
+  margin: 80rpx 0 0 30rpx ;
+}
+
+.hot-title{
+  font-size: 38rpx;
+  font-weight: 600;
+}
+
+.hot-type{
+  margin-top: 60rpx;
+  font-size: 28rpx;
+}
+
+
+
+
