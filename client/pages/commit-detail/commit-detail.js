@@ -23,7 +23,8 @@ Page({
     commmentId:{},
     userInfo:null,
     iList:{},
-    issueState:UNCOMMENTED
+    issueState:UNCOMMENTED,
+    userComment:null,
 
   },
 
@@ -36,9 +37,10 @@ Page({
         this.setData({
           userInfo
         })
+        this.getIssue()
         this.getCommentDetail(options.commentId)
         this.testCollection()
-        this.getIssue()
+       
         
       },
       fail: err => {
@@ -112,29 +114,34 @@ Page({
   },
 
   typeChoice(event) {
-    //要先获取数据查看用户是否评价过这部电影
-    //console.log(event)
-    let movieId=event.currentTarget.id
-    console.log(movieId)
     //获取用户发布的评论列表查看是否有这部电影
-
-    wx.showActionSheet({
-      itemList: ['文字', '音频'],
-      success: res => {
-        if (res.tapIndex == 1) {
-          wx.navigateTo({
-            url: `/pages/add-commit/add-commit?type=audio&id=${movieId}`,
-          })
-        } else {
-          wx.navigateTo({
-            url: `/pages/add-commit/add-commit?type=text&id=${movieId}`,
-          })
+    console.log(this.data.issueState)
+    let state = this.data.issueState
+    if(state==1){
+      let commentId=this.data.userComment
+      wx.redirectTo({
+        url: `/pages/commit-detail/commit-detail?commentId=${commentId}`,
+      })
+    }else{
+      wx.showActionSheet({
+        itemList: ['文字', '音频'],
+        success: res => {
+          if (res.tapIndex == 1) {
+            wx.navigateTo({
+              url: `/pages/add-commit/add-commit?type=audio&id=${movieId}`,
+            })
+          } else {
+            wx.navigateTo({
+              url: `/pages/add-commit/add-commit?type=text&id=${movieId}`,
+            })
+          }
+        },
+        fail: res => {
+          console.log(res)
         }
-      },
-      fail: res => {
-        console.log(res)
-      }
-    })
+      })
+    }
+    
   },
 
   getCommentDetail(id){
@@ -287,12 +294,15 @@ Page({
         for(let i=0;i<issueList.length;i++){
           //console.log(issueList[i].id)
           if(issueList[i].title==title){
+            
             this.setData({
+              userComment:issueList[i].id,
               issueState:COMMENTED
             })
+            
           }
         }
-        console.log(this.data.issueState)
+        //console.log(this.data.userComment)
 
       },
       fail: res => {

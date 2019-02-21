@@ -126,7 +126,14 @@ Page({
     })
     let operation=e.type
     if(operation=='touchstart'){
-      recorderHolder.start()
+      recorderHolder.start({
+        duration:6000,
+        sampleRate:44100,
+        numberOfChannels:1,
+        encodeBitRate:192000,
+        format:'mp3',
+        frameSize:50
+      })
     }else{
       recorderHolder.stop()
     }
@@ -159,9 +166,21 @@ Page({
   
   //提交影评
   submit(){
+    console.log(this.data.movieInfo.id)
     //如果是音频评论先将音频文件上传至对象存储
+    if(this.data.commentType=='audio'){
+      this.uploadVoice(()=>{
+        this.uploadComment()
+      })
+    }else{
+      this.uploadComment()
+    }
+   
+    
+  },
 
-    //登陆后上传
+  //上传评论函数
+  uploadComment(){
     app.doQcloudLogin({
       success: ({ userInfo }) => {
         this.setData({
@@ -174,12 +193,30 @@ Page({
           data: {
             movieId: this.data.movieInfo.id,
             type: this.data.commentType,
-            content: this.data.commentType == 'audio' ? this.data.audioComment : this.data.textComment,
+            content: this.data.commentType == 'audio' ? this.data.audioComment : this.data.textComment
           },
           success: res => {
             console.log(res)
+            if (!res.data.code) {
+              wx.showToast({
+                title: '影评发布成功',
+              })
+              let id = this.data.movieInfo.id
+              wx.redirectTo({
+                url: `/pages/commit-list/commit-list?id=${id}`,
+              })
+            } else {
+              wx.showToast({
+                title: '影评发布失败',
+                icon: 'none'
+              })
+            }
           },
           fail: res => {
+            wx.showToast({
+              title: '影评发布失败',
+              icon: 'none'
+            })
             console.log(res)
           }
         })
@@ -188,8 +225,32 @@ Page({
         console.log(err)
       }
     })
-   
-    
+  },
+
+
+  //音频上传函数
+  uploadVoice(callback){
+    let tempPath=this.data.audioComment
+    wx.uploadFile({
+      url: config.service.uploadUrl,
+      filePath: tempPath,
+      name: 'file',
+      header:{
+        'content-type':'multipart/form-data'
+      },
+      success:res=>{
+        console.log(res)
+        let audioUrl=JSON.parse(res.data).data.imgUrl
+        this.setData({
+          audioComment:audioUrl
+        })
+        console.log(this.data.audioComment)
+        callback&&callback()
+      },
+      fail:res=>{
+        console.log(res)
+      }
+    })
   }
 
 

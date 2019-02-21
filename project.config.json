@@ -39,10 +39,10 @@
 					"query": "id=1"
 				},
 				{
-					"id": -1,
+					"id": 1,
 					"name": "影评列表",
 					"pathName": "pages/commit-list/commit-list",
-					"query": ""
+					"query": "id=1"
 				},
 				{
 					"id": -1,
@@ -54,7 +54,7 @@
 					"id": 3,
 					"name": "编辑评论编译",
 					"pathName": "pages/add-commit/add-commit",
-					"query": "type=text&id=8"
+					"query": "type=audio&id=10"
 				},
 				{
 					"id": 4,

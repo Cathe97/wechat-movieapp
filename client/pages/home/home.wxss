@@ -60,3 +60,8 @@
   font-size: 32rpx;
   margin: 0 10rpx;
 }
+
+.data-fail{
+  margin: 100rpx 280rpx;
+  
+}

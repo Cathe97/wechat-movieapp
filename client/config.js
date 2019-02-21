@@ -44,7 +44,7 @@ var config = {
         iList: `${host}/weapp/comment-user`,
 
         //提交影评
-        submit:`${host}/weapp/comment-sub`
+        submit:`${host}/weapp/comment/sub`
     }
 };
 

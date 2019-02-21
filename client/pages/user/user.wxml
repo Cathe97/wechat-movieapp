@@ -16,7 +16,7 @@
   </picker>
 
   <view class='commit-list' wx:if='{{index==0}}'>
-    <navigator class='commit-item' hover-class='none' url='/pages/commit-detail/commit-detail?commentId={{item.id}}' wx:for="{{list}}" wx:key='id'>
+    <navigator class='commit-item' hover-class='none'  wx:for="{{list}}" url='/pages/commit-detail/commit-detail?commentId={{item.id}}' wx:key='id'>
       <image class='movie-poster' src='{{item.image}}' mode='widthFix'></image>
       <view class='commit-info'>
         <view class='movie-title'>{{item.title}}</view>

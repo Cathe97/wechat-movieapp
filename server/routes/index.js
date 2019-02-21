@@ -50,7 +50,7 @@ router.post('/collection', validationMiddleware,controllers.collection.operate)
 router.get('/collection', validationMiddleware, controllers.collection.list)
 
 //上传评论
-router.put('/comment-sub', validationMiddleware, controllers.commit.subComment)
+router.put('/comment/sub', validationMiddleware, controllers.commit.subComment)
 
 
 

@@ -22,6 +22,23 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    app.doQcloudLogin({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo
+        })
+        
+        this.getCollection()
+        this.getIssue()
+      },
+      fail: err => {
+        console.log(err)
+        wx.showToast({
+          title: '登录失败',
+          icon: 'none'
+        })
+      }
+    })
   },
 
   /**
@@ -77,11 +94,12 @@ Page({
       login: true,
       success: r => {
         //获得收藏列表
+        console.log(r)
         let list = r.data.data
         this.setData({
           list:list
         })
-        //console.log(this.data.list)
+        console.log(this.data.list)
         
       },
       fail: r => {
@@ -111,6 +129,25 @@ Page({
         wx.showToast({
           title: '数据加载失败',
           icon:'none'
+        })
+      }
+    })
+  },
+
+  onPullDownRefresh(){
+    app.doQcloudLogin({
+      success: ({ userInfo }) => {
+        this.setData({
+          userInfo
+        })
+        this.getIssue()
+        this.getCollection()
+      },
+      fail: err => {
+        console.log(err)
+        wx.showToast({
+          title: '登录失败',
+          icon: 'none'
         })
       }
     })

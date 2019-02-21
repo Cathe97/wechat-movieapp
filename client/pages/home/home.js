@@ -1,6 +1,8 @@
 // pages/home/home.js
 const qcloud = require('../../vendor/wafer2-client-sdk/index.js')
 const config = require('../../config.js')
+const PREPARING=0
+const FINISHED=1
 
 Page({
 
@@ -9,7 +11,8 @@ Page({
    */
   data: {
     detail:{},
-    movieInfo:{}
+    movieInfo:{},
+    state:PREPARING,
   },
 
   /**
@@ -17,6 +20,7 @@ Page({
    */
   onLoad: function (options) {
       this.getRandomComment()
+      //console.log(this.data.detail)
   },
 
   
@@ -32,7 +36,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    this.getRandomComment()
   },
 
 
@@ -53,14 +57,18 @@ Page({
       success:res=>{
         let allList=res.data.data
         let range=allList.length
-        let i = Math.floor(Math.random()*range)
-        let detail=allList[i]
-        //console.log(detail)
-        this.setData({
-          detail:detail
-        })
-        let id=detail.movie_id
-        this.getMovieDetail(id)
+        if(range!=0&&allList!=undefined){
+          //console.log('enter')
+          let range = allList.length
+          let i = Math.floor(Math.random()*range)
+          let detail = allList[i]
+          this.setData({
+            detail: detail,
+            state:FINISHED
+          })
+          let id = detail.movie_id
+          this.getMovieDetail(id)
+        }
         
       },
       fail:res=>{
